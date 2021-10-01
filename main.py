@@ -31,13 +31,13 @@ def reconstruct_content(model, path_content):
     plt.show()
 
     optimizer = tf.keras.optimizers.Adam()
-    for i in range(9999):
+    for i in range(999):
         loss = 0
         with tf.GradientTape() as g:
             g.watch(reconstruction) # Must call watch on a tf.Tensor
             activation_maps = model(reconstruction)
             for j in range(len(activation_maps)):
-                loss += tf.reduce_sum((content_activation_maps[j] - activation_maps[j]) ** 2)
+                loss += tf.reduce_sum((content_activation_maps[0] - activation_maps[0]) ** 2)
         grads = g.gradient(loss, reconstruction)
         optimizer.apply_gradients(zip([grads], [reconstruction]))
         print(loss)

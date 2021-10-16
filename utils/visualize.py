@@ -10,6 +10,7 @@ def plot_images_rowwise(images, save_path=None):
     fig, axs = plt.subplots(1, len(images))
     for i, image in enumerate(images):
         axs[i].imshow(tf.cast(image[0], tf.uint8))
+        axs[i].set_axis_off()
     if save_path:
         plt.savefig(save_path)
     else:
